@@ -10,7 +10,7 @@
 
 # Set GCLOUD_PROJECT in .env
 export GCLOUD_PROJECT=
-. ../../../.env
+. ../../.env
 
 echo GOROOT=${GOROOT}
 echo GOPATH=${GOPATH}
