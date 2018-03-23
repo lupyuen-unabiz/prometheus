@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="prometheus" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="true">
+    <module name="prometheus" />
+    <working_directory value="$PROJECT_DIR$/cmd/prometheus" />
+    <go_parameters value="-i" />
+    <kind value="DIRECTORY" />
+    <filePath value="$PROJECT_DIR$/" />
+    <package value="github.com/prometheus/prometheus" />
+    <directory value="$PROJECT_DIR$/cmd/prometheus" />
+    <output_directory value="$PROJECT_DIR$/cmd/prometheus" />
+    <method />
+  </configuration>
+</component>

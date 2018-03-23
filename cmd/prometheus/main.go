@@ -112,7 +112,8 @@ func main() {
 		Default("prometheus.yml").StringVar(&cfg.configFile)
 
 	a.Flag("web.listen-address", "Address to listen on for UI, API, and telemetry.").
-		Default("0.0.0.0:9090").StringVar(&cfg.web.ListenAddress)
+		////  TODO Lup Yuen: Default("0.0.0.0:9090").StringVar(&cfg.web.ListenAddress)
+		Default("0.0.0.0:8080").StringVar(&cfg.web.ListenAddress)  ////  TODO Lup Yuen
 
 	a.Flag("web.read-timeout",
 		"Maximum duration before timing out read of the request, and closing idle connections.").
