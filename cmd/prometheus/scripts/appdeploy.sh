@@ -8,25 +8,34 @@
 # echo 'export GOPATH=$GOROOT/bin' >>~/.zshrc
 # go get -u google.golang.org/appengine
 
-# Set GCLOUD_PROJECT in .env
-export GCLOUD_PROJECT=
-. ../../.env
+name=prometheus
+package=github.com/prometheus/prometheus
 
 OLD_GOPATH=${GOPATH}
-export GOPATH=${OLD_GOPATH}/src/github.com/prometheus/prometheus/vendor
+export GOPATH=/tmp/gopath_${name}
 
 echo GOROOT=${GOROOT}
 echo GOPATH=${GOPATH}
 echo OLD_GOPATH=${OLD_GOPATH}
 
-echo ========= ${name} ========= mkdir -p ${GOPATH}/github.com/prometheus
-mkdir -p ${GOPATH}/github.com/prometheus
+echo ========= ${name} ========= "rm -rf ${GOPATH}/src/*"
+rm -rf ${GOPATH}/src/*
 
-echo ========= ${name} ========= ln -s ${OLD_GOPATH}/src/github.com/prometheus/prometheus ${GOPATH}/github.com/prometheus/prometheus
-ln -s ${OLD_GOPATH}/src/github.com/prometheus/prometheus ${GOPATH}/github.com/prometheus/prometheus
+echo ========= ${name} ========= "mkdir -p ${GOPATH}/src/${package}/"
+mkdir -p ${GOPATH}/src/${package}
 
-echo ========= ${name} ========= ln -s ${GOPATH} ${GOPATH}/src
-ln -s ${GOPATH} ${GOPATH}/src
+echo ========= ${name} ========= "cp -r ${OLD_GOPATH}/src/${package}/vendor/* ${GOPATH}/src/"
+cp -r ${OLD_GOPATH}/src/${package}/vendor/* ${GOPATH}/src/
+
+echo ========= ${name} ========= "cp -r ${OLD_GOPATH}/src/${package}/* ${GOPATH}/src/${package}/"
+cp -r ${OLD_GOPATH}/src/${package}/* ${GOPATH}/src/${package}/
+
+echo ========= ${name} ========= "rm -rf ${GOPATH}/src/${package}/vendor/"
+rm -rf ${GOPATH}/src/${package}/vendor/
+
+# Set GCLOUD_PROJECT in .env
+export GCLOUD_PROJECT=
+. ../../.env
 
 # Deploy to Google Cloud.
 echo ========= ${name} ========= gcloud config set project ${GCLOUD_PROJECT}
