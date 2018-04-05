@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 # Deploy the web app to Google App Engine.
 
-# sudo apt install golang
-# sudo apt install google-cloud-sdk-app-engine-go
-# echo 'export GOROOT=$HOME/go' >>~/.zshrc
-# echo 'export PATH=$PATH:$GOROOT/bin' >>~/.zshrc
-# echo 'export GOPATH=$GOROOT/bin' >>~/.zshrc
-# go get -u google.golang.org/appengine
-
 name=prometheus
 package=github.com/prometheus/prometheus
 
@@ -51,3 +44,10 @@ echo ========= ${name} Deployed! =========
 
 export GOPATH=${OLD_GOPATH}
 echo GOPATH=${GOPATH}
+
+# sudo apt install golang
+# sudo apt install google-cloud-sdk-app-engine-go
+# echo 'export GOROOT=$HOME/go' >>~/.zshrc
+# echo 'export PATH=$PATH:$GOROOT/bin' >>~/.zshrc
+# echo 'export GOPATH=$GOROOT/bin' >>~/.zshrc
+# go get -u google.golang.org/appengine

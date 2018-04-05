@@ -3,6 +3,10 @@ service: prometheus
 env: flex
 runtime: go1.10
 
+network:
+  instance_tag: prometheus
+  name: default
+
 manual_scaling:
   instances: 1
 
@@ -14,19 +18,19 @@ resources:
 # Must use an unprotected URL for liveness and readiness checks
 
 liveness_check:
-  path: "/graph"
+  path: "/graph?zzz=liveness_check"
+  timeout_sec: 300
   check_interval_sec: 300
-  timeout_sec: 10
   failure_threshold: 10
-  success_threshold: 2
-  initial_delay_sec: 300
+  success_threshold: 1
+  initial_delay_sec: 3600
 
 readiness_check:
-  path: "/graph"
-  check_interval_sec: 300
+  path: "/graph?zzz=readiness_check"
   timeout_sec: 300
+  check_interval_sec: 300
   failure_threshold: 10
-  success_threshold: 2
+  success_threshold: 1
   app_start_timeout_sec: 3600
 
 # Define credentials as environment variables
