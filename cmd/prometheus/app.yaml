@@ -37,6 +37,6 @@ readiness_check:
 #includes:
 #- env.yaml
 
-#skip_files:
-#- ^vendor/.*$
-#- ^vendor.zip$
+# Data folder will be recreated
+skip_files:
+- ^data/.*$
