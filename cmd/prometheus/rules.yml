@@ -1,0 +1,11 @@
+groups:
+- name: example
+  rules:
+
+  # Alert for any instance that is unreachable for >5 minutes.
+  - alert: InstanceDown
+    expr: button_presses_total - button_presses_total offset 5m >= 0
+    for: 1m
+    annotations:
+      summary: "instance {{ $labels.instance }}"
+      description: "instance {{ $labels.instance }} / job {{ $labels.job }} / value {{ $value }}"
