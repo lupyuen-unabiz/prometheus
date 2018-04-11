@@ -1,8 +1,9 @@
+# Compute the metrics for thethings.io.  Send the updates to thethings.io via alerts.
 groups:
 - name: metrics
   rules:
 
-  # Alert for updates in number of button presses in the last 5 mins
+  # Compute number of button presses in the last 5 mins. When there is an update, send update to thethings.io as an alert
   - alert: button_presses_5m
     expr: button_presses_total - button_presses_total offset 5m >= 0
     for: 1m
